@@ -1,5 +1,6 @@
 import 'package:clone_home_twitter/widgets/custom_button.widget.dart';
 import 'package:clone_home_twitter/widgets/social_button.widget.dart';
+import 'package:clone_home_twitter/widgets/terms_and_privacy.widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeTwitterPage extends StatelessWidget {
@@ -15,10 +16,14 @@ class HomeTwitterPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image.asset("assets/images/twitter.png", width: 30, height: 30),
-              Text(
-                "See what's happening in the world right now",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Align(
+                  child: Text(
+                    "See what's happening in the world right now",
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
               SocialButton(pathImage: "google", text: "Google"),
               SizedBox(height: 20),
@@ -35,6 +40,21 @@ class HomeTwitterPage extends StatelessWidget {
               ),
               SizedBox(height: 5),
               CustomButton(text: "Create account"),
+              SizedBox(height: 30),
+              TermsAndPrivacy(),
+              SizedBox(height: 50),
+              RichText(
+                text: TextSpan(
+                  text: "Have an account already? ",
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: " Log in",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
