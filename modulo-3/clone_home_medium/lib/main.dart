@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Clone home meium',
+      title: 'Clone home medium',
       theme: ThemeData(
         // Thi
         colorScheme: .fromSeed(seedColor: Colors.blue),
