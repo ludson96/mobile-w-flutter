@@ -15,53 +15,103 @@ class HomeMediumPage extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/images/medium.png",
-                height: 55,
+                height: 40,
                 cacheHeight:
                     165, // Otimiza a decodificação para economizar memória
+                key: ValueKey("imageMedium"),
               ),
+              SizedBox(height: 60),
               Center(
                 child: Text(
                   "Join Medium.",
-                  style: TextStyle(fontSize: 55, fontFamily: 'PlayfairDisplay'),
+                  style: TextStyle(fontSize: 45, fontFamily: 'PlayfairDisplay'),
+                  key: ValueKey("textTitle"),
                 ),
               ),
-              SocialButton(image: "assets/images/google.png", social: "Google"),
+              SizedBox(height: 30),
+              SocialButton(
+                image: "assets/images/google.png",
+                social: "Google",
+                key: ValueKey("signupGoogle"),
+              ),
               SizedBox(height: 15),
-              SocialButton(image: "assets/images/email.png", social: "Email"),
+              SocialButton(
+                image: "assets/images/email.png",
+                social: "Email",
+                key: ValueKey("signupEmail"),
+              ),
               SizedBox(height: 30),
               Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.black)),
+                  Expanded(
+                    key: ValueKey("dividerLeft"),
+                    child: Divider(color: Colors.black),
+                  ),
                   Padding(
                     padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
                     child: Text(
                       "Or, sign up with",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
                     ),
                   ),
-                  Expanded(child: Divider(color: Colors.black)),
+                  Expanded(
+                    key: ValueKey("dividerRight"),
+                    child: Divider(color: Colors.black),
+                  ),
                 ],
               ),
               SizedBox(height: 30),
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  shape: BoxShape.circle,
+              InkWell(
+                key: ValueKey("buttonFacebook"),
+                onTap: () {},
+                customBorder: CircleBorder(),
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset("assets/images/facebook.png", height: 25),
                 ),
-                child: Image.asset("assets/images/facebook.png", height: 35),
               ),
               SizedBox(height: 30),
               Center(
                 child: RichText(
                   text: TextSpan(
                     text: "Already have an account?",
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
                         text: " Sign in",
                         style: TextStyle(color: Colors.green),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              Spacer(),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: "By signing up, you agree to our ",
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(
+                        text: "Terms of Service ",
+                        style: TextStyle(
+                          color: Colors.green,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                      TextSpan(text: "and acknowledge that our "),
+                      TextSpan(
+                        text: "Privacy Policy ",
+                        style: TextStyle(
+                          color: Colors.green,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                      TextSpan(text: "applies to you."),
                     ],
                   ),
                 ),
