@@ -6,7 +6,11 @@ class TasksListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Todo List')),
+      appBar: AppBar(centerTitle: true, title: const Text('Tarefas')),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text("Nova tarefa"),
+      ),
     );
   }
 }

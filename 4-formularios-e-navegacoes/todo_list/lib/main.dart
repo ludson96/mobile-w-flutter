@@ -15,6 +15,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+        ),
       ),
       home: const TasksListPage(),
     );
