@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: const TasksListPage(),
+      home: TasksListPage(),
     );
   }
 }
