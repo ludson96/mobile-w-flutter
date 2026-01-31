@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task.model.dart';
 
-class TasksListPage extends StatelessWidget {
-  TasksListPage({super.key});
+class TasksListPage extends StatefulWidget {
+  const TasksListPage({super.key});
 
+  @override
+  State<TasksListPage> createState() => _TasksListPageState();
+}
+
+class _TasksListPageState extends State<TasksListPage> {
   final List<Task> tasks = [
     Task(title: "Hora do Hu3", description: "Melhor hora do dia"),
     Task(
       title: "Segunda tarefa",
       description: "Eu sou a descrição da segunda tarefa",
-    ),
+      important: true,
+    )..completed = true,
   ];
 
   @override
@@ -39,8 +45,25 @@ class TasksListPage extends StatelessWidget {
                 subtitle: task.description != null
                     ? Text(task.description!)
                     : null,
-                leading: Checkbox(value: task.completed, onChanged: (value) {}),
-                trailing: const Icon(Icons.star, color: Colors.indigo),
+                leading: Checkbox(
+                  value: task.completed,
+                  onChanged: (value) {
+                    setState(() {
+                      task.changeStatus(value!);
+                    });
+                  },
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      task.changeImportant();
+                    });
+                  },
+                  color: Colors.indigo,
+                  icon: Icon(
+                    task.important == true ? Icons.star : Icons.star_border,
+                  ),
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
