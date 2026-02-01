@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task.model.dart';
+import 'package:todo_list/widgets/add_task.widget.dart';
 
 class TasksListPage extends StatefulWidget {
   const TasksListPage({super.key});
@@ -18,15 +19,18 @@ class _TasksListPageState extends State<TasksListPage> {
     )..completed = true,
   ];
 
+  void addTask() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const AddTask(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: const Text('Tarefas')),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text("Nova tarefa"),
-        icon: const Icon(Icons.add),
-      ),
+
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: ListView.builder(
@@ -72,6 +76,13 @@ class _TasksListPageState extends State<TasksListPage> {
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          addTask();
+        },
+        label: const Text("Nova tarefa"),
+        icon: const Icon(Icons.add),
       ),
     );
   }
