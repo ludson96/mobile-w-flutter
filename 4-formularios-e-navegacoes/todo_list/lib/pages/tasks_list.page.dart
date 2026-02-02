@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task.model.dart';
+import 'package:todo_list/pages/task_detail.page.dart';
 import 'package:todo_list/widgets/add_task.widget.dart';
 
 class TasksListPage extends StatefulWidget {
@@ -71,7 +72,11 @@ class _TasksListPageState extends State<TasksListPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (ctx) => const TaskDetail()),
+                  );
+                },
               ),
             );
           },
