@@ -10,20 +10,20 @@ class TasksListPage extends StatefulWidget {
 }
 
 class _TasksListPageState extends State<TasksListPage> {
-  final List<Task> tasks = [
-    Task(title: "Hora do Hu3", description: "Melhor hora do dia"),
-    Task(
-      title: "Segunda tarefa",
-      description: "Eu sou a descrição da segunda tarefa",
-      important: true,
-    )..completed = true,
-  ];
+  final List<Task> tasks = [];
 
-  void addTask() {
-    showModalBottomSheet(
+  void addTask() async {
+    final newTask = await showModalBottomSheet<Task>(
       context: context,
+      isScrollControlled: true,
       builder: (ctx) => const AddTask(),
     );
+
+    if (newTask != null) {
+      setState(() {
+        tasks.add(newTask);
+      });
+    }
   }
 
   @override
