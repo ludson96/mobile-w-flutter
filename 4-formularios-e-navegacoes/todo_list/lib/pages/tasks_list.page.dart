@@ -74,7 +74,9 @@ class _TasksListPageState extends State<TasksListPage> {
                 ),
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (ctx) => const TaskDetail()),
+                    MaterialPageRoute(
+                      builder: (ctx) => TaskDetailPage(task: task),
+                    ),
                   );
                 },
               ),

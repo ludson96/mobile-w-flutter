@@ -14,10 +14,15 @@ class MyApp extends StatelessWidget {
       title: 'Todo list',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {TargetPlatform.android: ZoomPageTransitionsBuilder()},
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.indigo,
           foregroundColor: Colors.white,
+          // surfaceTintColor: Colors.transparent,
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Colors.indigo,
