@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_compras/widgets/empty_list.widget.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -19,6 +20,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
+      body: EmptyList(),
     );
   }
 }
