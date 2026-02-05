@@ -3,9 +3,11 @@ class Task {
   String? description;
   bool completed;
   bool important;
+  DateTime createdAt;
 
   Task({required this.title, this.description, this.important = false})
-    : completed = false;
+    : completed = false,
+      createdAt = DateTime.now()  ;
 
   void changeStatus(bool status) {
     completed = status;

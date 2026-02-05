@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_list/models/task.model.dart';
 
 class TaskDetailPage extends StatefulWidget {
@@ -16,6 +17,8 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
 
   late bool isImportant;
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -26,9 +29,11 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
   }
 
   void saveTask() {
+    if (!formKey.currentState!.validate()) return;
+
     final updatedTask = widget.task;
 
-    updatedTask.changeStatus(isImportant);
+    updatedTask.important = isImportant;
     updatedTask.title = titleConstroller.text;
     updatedTask.description = descriptionController.text.isEmpty
         ? null
@@ -54,36 +59,53 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            TextField(
-              controller: titleConstroller,
-              decoration: const InputDecoration(labelText: "Título"),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: descriptionController,
-              decoration: const InputDecoration(
-                labelText: "Descrição",
-                border: OutlineInputBorder(),
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: titleConstroller,
+                decoration: const InputDecoration(labelText: "Título"),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Campo obrigatório";
+                  }
+
+                  return null;
+                },
               ),
-              maxLines: 5,
-            ),
-            const SizedBox(height: 40),
-            TextButton(onPressed: saveTask, child: const Text("Salvar tarefa")),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Criado Sex, 24 de mar"),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete_outline),
-                  iconSize: 28,
+              const SizedBox(height: 20),
+              TextField(
+                controller: descriptionController,
+                decoration: const InputDecoration(
+                  labelText: "Descrição",
+                  border: OutlineInputBorder(),
                 ),
-              ],
-            ),
-          ],
+                maxLines: 5,
+              ),
+              const SizedBox(height: 40),
+              TextButton(
+                onPressed: saveTask,
+                child: const Text("Salvar tarefa"),
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Criada ${DateFormat.MMMEd("pt_BR").format(widget.task.createdAt)}",
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop("Removido");
+                    },
+                    icon: const Icon(Icons.delete_outline),
+                    iconSize: 28,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
