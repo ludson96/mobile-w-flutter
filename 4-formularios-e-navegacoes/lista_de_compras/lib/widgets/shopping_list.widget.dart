@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_compras/model/item_list.model.dart';
+import 'package:lista_de_compras/pages/item_details.page.dart';
 
 class ShoppingList extends StatelessWidget {
   const ShoppingList({super.key, required this.itemsList});
@@ -30,6 +31,11 @@ class ShoppingList extends StatelessWidget {
               value: total == 0 ? 0 : bought / total,
               color: Colors.green,
             ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ItemDetailsPage(itemList: itemList,)),
+              );
+            },
           ),
         );
       },
