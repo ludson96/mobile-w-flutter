@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_compras/widgets/add_list.widget.dart';
 import 'package:lista_de_compras/widgets/empty_list.widget.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  void addList() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AddList(),
+        fullscreenDialog: true,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +37,11 @@ class Home extends StatelessWidget {
         ],
       ),
       body: EmptyList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: addList,
+        shape: CircleBorder(),
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

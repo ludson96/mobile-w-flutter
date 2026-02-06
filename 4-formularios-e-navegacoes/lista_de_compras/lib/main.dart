@@ -19,6 +19,10 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.green,
           foregroundColor: Colors.white,
         ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+        ),
       ),
       home: Home(),
     );
