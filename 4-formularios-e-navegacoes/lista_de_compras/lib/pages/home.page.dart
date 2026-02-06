@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_compras/model/item_list.model.dart';
 import 'package:lista_de_compras/widgets/add_list.widget.dart';
 import 'package:lista_de_compras/widgets/empty_list.widget.dart';
+import 'package:lista_de_compras/widgets/shopping_list.widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,14 +12,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  void addList() {
-    Navigator.push(
+  final List<ItemList> itemLists = [];
+
+  void addList() async {
+    final newItemList = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const AddList(),
         fullscreenDialog: true,
       ),
     );
+
+    if (newItemList != null) {
+      setState(() {
+        itemLists.add(newItemList);
+      });
+    }
   }
 
   @override
@@ -36,7 +46,9 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: EmptyList(),
+      body: itemLists.isEmpty
+          ? const EmptyList()
+          : ShoppingList(itemsList: itemLists),
       floatingActionButton: FloatingActionButton(
         onPressed: addList,
         shape: CircleBorder(),

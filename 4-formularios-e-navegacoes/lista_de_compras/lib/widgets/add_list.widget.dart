@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_compras/model/item_list.model.dart';
 
-class AddList extends StatelessWidget {
+class AddList extends StatefulWidget {
   const AddList({super.key});
+
+  @override
+  State<AddList> createState() => _AddListState();
+}
+
+class _AddListState extends State<AddList> {
+  final nameController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
+
+  void addList() {
+    final itemList = ItemList(name: nameController.text);
+
+    Navigator.of(context).pop(itemList);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +30,19 @@ class AddList extends StatelessWidget {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  label: Text("Nome da lista"),
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.zero,
+              child: Form(
+                key: formKey,
+                child: TextFormField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    label: Text("Nome da lista"),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
-                  filled: true,
-                  fillColor: Colors.white,
                 ),
               ),
             ),
@@ -44,9 +64,7 @@ class AddList extends StatelessWidget {
                   child: Text("Voltar", style: TextStyle(color: Colors.white)),
                 ),
                 TextButton(
-                  onPressed: () {
-                    return Navigator.of(context).pop();
-                  },
+                  onPressed: addList,
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 70),
                     side: const BorderSide(color: Colors.white),
