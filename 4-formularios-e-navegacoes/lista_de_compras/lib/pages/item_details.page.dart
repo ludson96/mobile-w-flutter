@@ -58,6 +58,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
                         Transform.scale(
                           scale: 1.5,
                           child: Checkbox(
+                            key: Key("productCheckbox"),
                             value: widget.itemList.items[index].isBuy,
                             onChanged: (value) {
                               setState(() {
@@ -125,6 +126,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
       floatingActionButton: SizedBox(
         height: 45,
         child: FloatingActionButton.extended(
+          key: Key("addNewItemBtn"),
           label: Text("Adicionar"),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),

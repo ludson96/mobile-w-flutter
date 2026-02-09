@@ -33,6 +33,7 @@ class _AddListState extends State<AddList> {
               child: Form(
                 key: formKey,
                 child: TextFormField(
+                  key: Key("listNameInput"),
                   controller: nameController,
                   decoration: InputDecoration(
                     label: Text("Nome da lista"),
@@ -51,6 +52,7 @@ class _AddListState extends State<AddList> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextButton(
+                  key: Key("backToListsBtn"),
                   onPressed: () {
                     return Navigator.of(context).pop();
                   },
@@ -64,6 +66,7 @@ class _AddListState extends State<AddList> {
                   child: Text("Voltar", style: TextStyle(color: Colors.white)),
                 ),
                 TextButton(
+                  key: Key("createListBtn"),
                   onPressed: addList,
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 70),

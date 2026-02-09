@@ -6,6 +6,7 @@ class EmptyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      key: Key("emptyListImage"),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

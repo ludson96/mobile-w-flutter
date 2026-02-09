@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(
           "Minhas listas",
+          key: Key("appBarTitle"),
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
@@ -50,6 +51,7 @@ class _HomeState extends State<Home> {
           ? const EmptyList()
           : ShoppingList(itemsList: itemLists),
       floatingActionButton: FloatingActionButton(
+        key: Key("addListBtn"),
         onPressed: addList,
         shape: CircleBorder(),
         child: Icon(Icons.add),

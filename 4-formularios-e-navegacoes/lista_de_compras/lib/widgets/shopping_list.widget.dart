@@ -22,6 +22,7 @@ class _ShoppingListState extends State<ShoppingList> {
         final bought = itemList.items.where((item) => item.isBuy).length;
 
         return Card(
+          key: Key("shoppingListCard"),
           child: ListTile(
             title: Row(
               children: [

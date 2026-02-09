@@ -57,6 +57,7 @@ class _AddItemState extends State<AddItem> {
             ),
             Divider(),
             TextFormField(
+              key: Key("inputItem"),
               controller: nameItemController,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -72,6 +73,7 @@ class _AddItemState extends State<AddItem> {
               },
             ),
             TextFormField(
+              key: Key("inputValue"),
               controller: valueItemController,
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
@@ -86,6 +88,7 @@ class _AddItemState extends State<AddItem> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
+                  key: Key("addItemBtn"),
                   onPressed: addItemInList,
                   child: Text(
                     "Adicionar",
