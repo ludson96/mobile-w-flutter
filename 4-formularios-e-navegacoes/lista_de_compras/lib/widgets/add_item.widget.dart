@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lista_de_compras/model/item.model.dart';
 
 class AddItem extends StatefulWidget {
@@ -77,9 +76,6 @@ class _AddItemState extends State<AddItem> {
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
               ),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[0-9,]')),
-              ],
               decoration: InputDecoration(
                 border: InputBorder.none,
                 label: Text("R\$ 0,00"),
