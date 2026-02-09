@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_compras/model/item_list.model.dart';
+import 'package:lista_de_compras/widgets/add_item.widget.dart';
 
-class ItemDetailsPage extends StatelessWidget {
+class ItemDetailsPage extends StatefulWidget {
   const ItemDetailsPage({super.key, required this.itemList});
 
   final ItemList itemList;
+
+  @override
+  State<ItemDetailsPage> createState() => _ItemDetailsPageState();
+}
+
+class _ItemDetailsPageState extends State<ItemDetailsPage> {
+  void addItem() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) => const AddItem(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +30,7 @@ class ItemDetailsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              itemList.name,
+              widget.itemList.name,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Divider(),
@@ -47,6 +61,16 @@ class ItemDetailsPage extends StatelessWidget {
               ],
             ),
           ],
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        height: 45,
+        child: FloatingActionButton.extended(
+          label: Text("Adicionar"),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          onPressed: addItem,
         ),
       ),
     );
