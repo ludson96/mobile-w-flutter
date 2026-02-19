@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/colors.dart';
+import 'package:pokedex/widgets/poke_card.widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -47,9 +48,10 @@ class HomePage extends StatelessWidget {
                   itemCount: 10,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
+                    childAspectRatio: 2 / 2.8,
                   ),
                   itemBuilder: (context, index) {
-                    return Card(color: Colors.green[200]);
+                    return const PokeCard();
                   },
                 ),
               ),
