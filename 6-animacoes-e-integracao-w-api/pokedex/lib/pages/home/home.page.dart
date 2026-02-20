@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pokedex/colors.dart';
-import 'package:pokedex/widgets/poke_card.widget.dart';
+import 'package:pokedex/pages/home/stores/home.store.dart';
+import 'package:pokedex/pages/home/widgets/poke_card.widget.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final store = HomeStore();
+
+  HomePage({super.key}) {
+    store.loadPokemons();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +49,24 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 2 / 2.8,
-                  ),
-                  itemBuilder: (context, index) {
-                    return const PokeCard();
-                  },
-                ),
+              Observer(
+                builder: (context) {
+                  return Expanded(
+                    child: store.isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : GridView.builder(
+                            itemCount: store.pokemons.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 2 / 2.8,
+                                ),
+                            itemBuilder: (context, index) {
+                              return PokeCard(pokemon: store.pokemons[index]);
+                            },
+                          ),
+                  );
+                },
               ),
             ],
           ),
