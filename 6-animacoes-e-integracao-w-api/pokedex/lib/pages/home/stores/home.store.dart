@@ -25,7 +25,13 @@ abstract class HomeStoreBase with Store {
   List<Pokemon> get filteredPokes {
     if (search == null) return pokemons.toList();
 
-    return pokemons.where((pokemon) => pokemon.name.contains(search!)).toList();
+    return pokemons
+        .where(
+          (pokemon) =>
+              pokemon.name.toLowerCase().contains(search!.toLowerCase()) ||
+              pokemon.id == search,
+        )
+        .toList();
   }
 
   @action
