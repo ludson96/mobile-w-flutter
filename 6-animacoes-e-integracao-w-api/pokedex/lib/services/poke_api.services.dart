@@ -10,8 +10,8 @@ class PokeApiService {
     _dio = Dio(BaseOptions(baseUrl: 'https://pokeapi.co/api/v2'));
   }
 
-  Future<PokeResponse> loadPokemons() async {
-    final response = await _dio.get('/pokemon');
+  Future<PokeResponse> loadPokemons({required int offset}) async {
+    final response = await _dio.get('/pokemon?offset=$offset&limit=20');
 
     if (response.statusCode != HttpStatus.ok) {
       throw Exception("Erro ao buscar pokemons na API");
