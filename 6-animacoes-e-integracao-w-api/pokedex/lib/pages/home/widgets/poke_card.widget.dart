@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator_master/palette_generator_master.dart';
 import 'package:pokedex/colors.dart';
@@ -48,7 +49,13 @@ class _PokeCardState extends State<PokeCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(widget.pokemon.imageUrl, height: 130),
+            Hero(
+              tag: ValueKey(widget.pokemon.id),
+              child: CachedNetworkImage(
+                imageUrl: widget.pokemon.imageUrl,
+                height: 130,
+              ),
+            ),
 
             const SizedBox(height: 15),
             Text(
