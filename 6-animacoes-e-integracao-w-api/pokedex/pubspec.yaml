@@ -40,6 +40,7 @@ dependencies:
   mobx_codegen: ^2.7.6
   palette_generator_master: ^1.0.1
   cached_network_image: ^3.4.1
+  percent_indicator: ^4.2.5
 
 dev_dependencies:
   flutter_test:
