@@ -91,27 +91,33 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
           }
 
           if (snapshot.hasError) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text(
-                      "O serviço de localização está desabilitado. Você  precisa habilitar para utilizá-lo",
-                      textAlign: .center,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    SizedBox(height: 20),
-                    OutlinedButton(
-                      onPressed: () async {
-                        await Geolocator.openLocationSettings();
-                      },
-                      child: Text("Habilitar localização"),
-                    ),
-                  ],
+            final error = snapshot.error as String;
+
+            if (error == 'SERVICE_NOT_ENABLE') {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        "O serviço de localização está desabilitado. Você  precisa habilitar para utilizá-lo",
+                        textAlign: .center,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SizedBox(height: 20),
+                      OutlinedButton(
+                        onPressed: () async {
+                          await Geolocator.openLocationSettings();
+                        },
+                        child: Text("Habilitar localização"),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            }
+
+            if (error == 'PERMISSION_LOCATION_DENIED') {}
           }
 
           return GoogleMap(
