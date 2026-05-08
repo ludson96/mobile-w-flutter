@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:clone_maps_ios/pages/home/widget/error_settings_map.widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,9 +15,12 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
-  final Completer<GoogleMapController> _controller =
+  final Completer<GoogleMapController> _controllerMap =
       Completer<GoogleMapController>();
   late String mapStyle;
+  CameraPosition? _initialPosition;
+  MapType _currentMapType = MapType.normal;
+  late Future<CameraPosition> _positionFuture;
 
   Future<CameraPosition> _determinePosition() async {
     // Test if location services are enabled.
@@ -41,6 +45,8 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
       zoom: 14,
     );
 
+    _initialPosition = cameraPosition;
+
     return cameraPosition;
   }
 
@@ -48,6 +54,7 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _positionFuture = _determinePosition();
     rootBundle
         .loadString('assets/map/style.json')
         .then((style) => mapStyle = style);
@@ -72,7 +79,7 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: _determinePosition(),
+        future: _positionFuture,
         builder: (_, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CircularProgressIndicator());
@@ -107,16 +114,67 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
             }
           }
 
-          return GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: snapshot.data!,
-            myLocationButtonEnabled: false,
-            myLocationEnabled: true,
-            zoomControlsEnabled: false,
-            style: mapStyle,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
+          return Stack(
+            children: [
+              GoogleMap(
+                mapType: _currentMapType,
+                initialCameraPosition: snapshot.data!,
+                myLocationButtonEnabled: false,
+                myLocationEnabled: true,
+                zoomControlsEnabled: false,
+                style: mapStyle,
+                onMapCreated: (GoogleMapController controller) {
+                  _controllerMap.complete(controller);
+                },
+              ),
+              Positioned(
+                right: 20,
+                top: kToolbarHeight,
+                child: Container(
+                  width: 40,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF121212),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: .center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentMapType = _currentMapType == MapType.normal
+                                ? MapType.satellite
+                                : MapType.normal;
+                          });
+                        },
+                        child: const Icon(
+                          CupertinoIcons.map_fill,
+                          color: Colors.grey,
+                          size: 20,
+                        ),
+                      ),
+                      const Divider(color: Colors.grey),
+                      GestureDetector(
+                        onTap: () async {
+                          final cameraUpdate = CameraUpdate.newCameraPosition(
+                            _initialPosition!,
+                          );
+
+                          final controller = await _controllerMap.future;
+                          controller.animateCamera(cameraUpdate);
+                        },
+                        child: const Icon(
+                          CupertinoIcons.location,
+                          color: Colors.grey,
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           );
         },
       ),
