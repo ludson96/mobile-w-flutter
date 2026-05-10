@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:clone_maps_ios/pages/home/widget/custom_draggable_sheet.widget.dart';
 import 'package:clone_maps_ios/pages/home/widget/error_settings_map.widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -116,17 +117,17 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
 
           return Stack(
             children: [
-              GoogleMap(
-                mapType: _currentMapType,
-                initialCameraPosition: snapshot.data!,
-                myLocationButtonEnabled: false,
-                myLocationEnabled: true,
-                zoomControlsEnabled: false,
-                style: mapStyle,
-                onMapCreated: (GoogleMapController controller) {
-                  _controllerMap.complete(controller);
-                },
-              ),
+              // GoogleMap(
+              //   mapType: _currentMapType,
+              //   initialCameraPosition: snapshot.data!,
+              //   myLocationButtonEnabled: false,
+              //   myLocationEnabled: true,
+              //   zoomControlsEnabled: false,
+              //   style: mapStyle,
+              //   onMapCreated: (GoogleMapController controller) {
+              //     _controllerMap.complete(controller);
+              //   },
+              // ),
               Positioned(
                 right: 20,
                 top: kToolbarHeight,
@@ -174,6 +175,7 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
                   ),
                 ),
               ),
+              CustomDraggableSheet(),
             ],
           );
         },
