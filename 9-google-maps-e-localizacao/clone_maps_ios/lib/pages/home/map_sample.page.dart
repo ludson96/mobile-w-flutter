@@ -23,6 +23,8 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
   MapType _currentMapType = MapType.normal;
   late Future<CameraPosition> _positionFuture;
 
+  final pins = ValueNotifier(<Marker>[]);
+
   Future<CameraPosition> _determinePosition() async {
     // Test if location services are enabled.
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -117,17 +119,33 @@ class MapSampleState extends State<MapSample> with WidgetsBindingObserver {
 
           return Stack(
             children: [
-              // GoogleMap(
-              //   mapType: _currentMapType,
-              //   initialCameraPosition: snapshot.data!,
-              //   myLocationButtonEnabled: false,
-              //   myLocationEnabled: true,
-              //   zoomControlsEnabled: false,
-              //   style: mapStyle,
-              //   onMapCreated: (GoogleMapController controller) {
-              //     _controllerMap.complete(controller);
-              //   },
-              // ),
+              ValueListenableBuilder(
+                valueListenable: pins,
+                builder: (_, value, _) {
+                  return GoogleMap(
+                    mapType: _currentMapType,
+                    initialCameraPosition: snapshot.data!,
+                    myLocationButtonEnabled: false,
+                    myLocationEnabled: true,
+                    zoomControlsEnabled: false,
+                    style: mapStyle,
+                    onMapCreated: (GoogleMapController controller) {
+                      _controllerMap.complete(controller);
+                    },
+                    markers: value.toSet(),
+                    onLongPress: (latLng) {
+                      final newPin = Marker(
+                        markerId: MarkerId(
+                          DateTime.now().millisecondsSinceEpoch.toString(),
+                        ),
+                        position: latLng,
+                      );
+
+                      pins.value = List.from(value)..add(newPin);
+                    },
+                  );
+                },
+              ),
               Positioned(
                 right: 20,
                 top: kToolbarHeight,
