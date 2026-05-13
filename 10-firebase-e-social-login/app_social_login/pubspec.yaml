@@ -1,4 +1,4 @@
-name: desafio_google_maps_in_class
+name: app_social_login
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,12 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^2.17.0
-  geolocator: ^14.0.2
-  dio: ^5.9.2
-  mobx: ^2.6.0
-  flutter_mobx: ^2.3.0
-  mobx_codegen: ^2.7.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -44,7 +38,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.11.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
