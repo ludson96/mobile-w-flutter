@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498938020314",
+    "project_id": "fase-8-ludson",
+    "storage_bucket": "fase-8-ludson.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498938020314:android:28b8b8d4a38609c6d2c0e3",
+        "android_client_info": {
+          "package_name": "br.com.app_social_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYUx5lh-7TljD-FdTQZtSDC_5Mej39eTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
