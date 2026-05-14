@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '498938020314',
     projectId: 'fase-8-ludson',
     storageBucket: 'fase-8-ludson.firebasestorage.app',
+    androidClientId: '498938020314-jrc3jisbo77cpejtlreggfi8rb58eu1k.apps.googleusercontent.com',
+    iosClientId: '498938020314-nm668k3ebuhjrl5p09ildbjjdcntduns.apps.googleusercontent.com',
     iosBundleId: 'br.com.appSocialLogin',
   );
 

@@ -12,7 +12,20 @@
           "package_name": "br.com.app_social_login"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "498938020314-jrc3jisbo77cpejtlreggfi8rb58eu1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.app_social_login",
+            "certificate_hash": "e3af16cdf63f8a35a7043ed5dda4b69ee1755c89"
+          }
+        },
+        {
+          "client_id": "498938020314-psptdhfm6uh6h27rl4cng7rcu676431n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCYUx5lh-7TljD-FdTQZtSDC_5Mej39eTo"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498938020314-psptdhfm6uh6h27rl4cng7rcu676431n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "498938020314-nm668k3ebuhjrl5p09ildbjjdcntduns.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.appSocialLogin"
+              }
+            }
+          ]
         }
       }
     }
