@@ -1,4 +1,5 @@
 import 'package:app_social_login/pages/login/widgets/login_button.widget.dart';
+import 'package:app_social_login/pages/profile.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,22 +11,40 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+bool _isGoogleSignInInitialized = false;
+
 class _LoginPageState extends State<LoginPage> {
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn.instance
-        .authenticate();
+  // O Web Client ID é público, mas armazená-lo como constante limpa o código
+  static const String _googleServerClientId =
+      '498938020314-psptdhfm6uh6h27rl4cng7rcu676431n.apps.googleusercontent.com';
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth = googleUser.authentication!;
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      if (!_isGoogleSignInInitialized) {
+        await GoogleSignIn.instance.initialize(
+          serverClientId: _googleServerClientId,
+        );
+        _isGoogleSignInInitialized = true;
+      }
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      idToken: googleAuth.idToken,
-    );
+      // Trigger the authentication flow
+      final GoogleSignInAccount googleUser = await GoogleSignIn.instance
+          .authenticate();
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      debugPrint('Erro no login com Google: $e');
+      return null;
+    }
   }
 
   @override
@@ -47,7 +66,18 @@ class _LoginPageState extends State<LoginPage> {
               LoginButton(
                 pathImage: "assets/images/google.png",
                 text: "Continue with Google",
-                onPressed: () async {},
+                onPressed: () async {
+                  final userCredential = await signInWithGoogle();
+
+                  if (userCredential != null && context.mounted) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  }
+                },
               ),
               const SizedBox(height: 15),
               LoginButton(
