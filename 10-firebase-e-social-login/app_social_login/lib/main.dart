@@ -1,4 +1,4 @@
-import 'package:app_social_login/pages/login/login.page.dart';
+import 'package:app_social_login/pages/splash_screen.page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
       ),
-      home: const LoginPage(),
+      home: const SplashScreenPage(),
     );
   }
 }
