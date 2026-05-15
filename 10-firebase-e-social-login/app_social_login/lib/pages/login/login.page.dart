@@ -3,6 +3,7 @@ import 'package:app_social_login/pages/profile.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -47,6 +48,32 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<UserCredential?> signInWithFacebook() async {
+    try {
+      // Trigger the sign-in flow
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      // Verifica se o login teve sucesso e se o token não é nulo
+      if (loginResult.status == LoginStatus.success &&
+          loginResult.accessToken != null) {
+        // Usa '!' para indicar ao Dart que o accessToken não é nulo
+        final OAuthCredential facebookAuthCredential =
+            FacebookAuthProvider.credential(
+              loginResult.accessToken!.tokenString,
+            );
+
+        // Once signed in, return the UserCredential
+        return await FirebaseAuth.instance.signInWithCredential(
+          facebookAuthCredential,
+        );
+      }
+      return null;
+    } catch (e) {
+      debugPrint('Erro no login com Facebook: $e');
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +110,18 @@ class _LoginPageState extends State<LoginPage> {
               LoginButton(
                 pathImage: "assets/images/facebook.png",
                 text: "Continue with Facebook",
-                onPressed: () async {},
+                onPressed: () async {
+                  await signInWithFacebook();
+
+                  if (context.mounted) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  }
+                },
               ),
               const SizedBox(height: 15),
               LoginButton(
