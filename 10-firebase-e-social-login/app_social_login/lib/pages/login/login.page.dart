@@ -2,6 +2,7 @@ import 'package:app_social_login/pages/login/store/login.store.dart';
 import 'package:app_social_login/pages/login/widgets/login_button.widget.dart';
 import 'package:app_social_login/pages/profile.page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,8 +14,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final loginStore = LoginStore();
 
-  void _navigateToProfilePage() {
-    if (context.mounted) return;
+  void navigateToProfilePage() {
+    if (!context.mounted) return;
 
     Navigator.pushReplacement(
       context,
@@ -38,23 +39,33 @@ class _LoginPageState extends State<LoginPage> {
                 textAlign: .center,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .1),
-              LoginButton(
-                pathImage: "assets/images/google.png",
-                text: "Continue with Google",
-                onPressed: () async {
-                  await loginStore.signInWithGoogle;
+              Observer(
+                builder: (context) {
+                  return LoginButton(
+                    isLoading: loginStore.isGoogleLoadin,
+                    pathImage: "assets/images/google.png",
+                    text: "Continue with Google",
+                    onPressed: () async {
+                      await loginStore.signInWithGoogle();
 
-                  _navigateToProfilePage();
+                      navigateToProfilePage();
+                    },
+                  );
                 },
               ),
               const SizedBox(height: 15),
-              LoginButton(
-                pathImage: "assets/images/facebook.png",
-                text: "Continue with Facebook",
-                onPressed: () async {
-                  await loginStore.signInWithFacebook();
+              Observer(
+                builder: (context) {
+                  return LoginButton(
+                    isLoading: loginStore.isFacebookLoading,
+                    pathImage: "assets/images/facebook.png",
+                    text: "Continue with Facebook",
+                    onPressed: () async {
+                      await loginStore.signInWithFacebook();
 
-                  _navigateToProfilePage();
+                      navigateToProfilePage();
+                    },
+                  );
                 },
               ),
               const SizedBox(height: 15),

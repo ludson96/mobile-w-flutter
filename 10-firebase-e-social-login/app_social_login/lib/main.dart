@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           foregroundColor: Colors.black,
         ),
+        progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.green),
       ),
       home: const SplashScreenPage(),
     );
