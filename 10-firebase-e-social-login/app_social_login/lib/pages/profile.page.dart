@@ -1,3 +1,4 @@
+import 'package:app_social_login/services/firebase_notification.service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   // Iniciamos com 1, pois é o índice correspondente à página de 'Profile' na sua lista 'destinations'
   int _selectedIndex = 1;
+
+  @override
+  void initState() {
+    super.initState();
+
+    FirebaseNotificationService().initialize();
+  }
 
   @override
   Widget build(BuildContext context) {
