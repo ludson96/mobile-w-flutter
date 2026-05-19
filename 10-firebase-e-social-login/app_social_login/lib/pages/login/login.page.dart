@@ -3,6 +3,7 @@ import 'package:app_social_login/pages/login/widgets/login_button.widget.dart';
 import 'package:app_social_login/pages/profile.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,7 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final loginStore = LoginStore();
+  final loginStore = GetIt.I<LoginStore>();
 
   void navigateToProfilePage() {
     if (!context.mounted) return;
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
               Observer(
                 builder: (context) {
                   return LoginButton(
-                    isLoading: loginStore.isGoogleLoadin,
+                    isLoading: loginStore.isGoogleLoading,
                     pathImage: "assets/images/google.png",
                     text: "Continue with Google",
                     onPressed: () async {
