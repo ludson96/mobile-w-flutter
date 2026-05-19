@@ -9,19 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final int initialIndex;
+
+  const ProfilePage({super.key, this.initialIndex = 0});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  // Iniciamos com 1, pois é o índice correspondente à página de 'Profile' na sua lista 'destinations'
-  int _selectedIndex = 1;
+  late int _selectedIndex;
 
   @override
   void initState() {
     super.initState();
+
+    _selectedIndex = widget.initialIndex;
 
     GetIt.I<FirebaseNotificationService>().initialize();
   }

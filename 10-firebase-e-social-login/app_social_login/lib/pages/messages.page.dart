@@ -17,7 +17,9 @@ class MessagePage extends StatelessWidget {
           // Portanto, precisamos voltar/redirecionar para a página principal:
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const ProfilePage()),
+            MaterialPageRoute(
+              builder: (context) => ProfilePage(initialIndex: index),
+            ),
           );
         },
       ),
