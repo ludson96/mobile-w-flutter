@@ -23,6 +23,7 @@ abstract class _LoginStore with Store {
   // O Web Client ID é público, mas armazená-lo como constante limpa o código
   static const String _googleServerClientId =
       '498938020314-psptdhfm6uh6h27rl4cng7rcu676431n.apps.googleusercontent.com';
+      
   @action
   Future<UserCredential?> signInWithGoogle() async {
     _isGoogleLoading = true;
