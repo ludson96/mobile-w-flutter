@@ -18,6 +18,4 @@ Um simples aplicativo de lista de tarefas desenvolvido com Flutter. Este projeto
 
 A tela de adição de tarefas permite ao usuário inserir os detalhes da tarefa de forma intuitiva.
 
-<p align="center">
-  <img src="assets/images/todolist-gif.gif" alt="Demonstração do App" width="300"/>
-</p>
+<img src="assets/images/todolist-gif.gif" alt="Demonstração do App" width="300"/>
