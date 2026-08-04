@@ -1,5 +1,7 @@
 # Todo List App
 
+🌍 Read this in [English](README.en.md)
+
 Um simples aplicativo de lista de tarefas desenvolvido com Flutter. Este projeto foi criado como parte dos estudos sobre formulários e navegação em Flutter.
 
 ## 📝 Sobre o Projeto

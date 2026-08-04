@@ -24,7 +24,7 @@ Pelo que pude analisar, o projeto está no início, mas a estrutura sugere as se
 ## 🖼️ Tela (Preview)
 
 
-<img src="assets/images/gif-lista-compras.gif" alt="Demonstração do App" width="300"/>
+<img src="assets/images/lista-compras-gif.gif" alt="Demonstração do App" width="300"/>
 
 
 ## 🚀 Como Executar o Projeto

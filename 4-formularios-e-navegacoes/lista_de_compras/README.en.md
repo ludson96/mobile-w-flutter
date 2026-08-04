@@ -24,7 +24,7 @@ From what I could analyze, the project is in its early stages, but the structure
 ## 🖼️ Screen (Preview)
 
 
-<img src="assets/images/gif-lista-compras.gif" alt="App Demonstration" width="300"/>
+<img src="assets/images/lista-compras-gif.gif" alt="App Demonstration" width="300"/>
 
 
 ## 🚀 How to Run the Project
