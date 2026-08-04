@@ -1,16 +1,47 @@
-# lista_de_compras
+# Lista de Compras 🛒
 
-A new Flutter project.
+Um aplicativo simples para gerenciamento de listas de compras, desenvolvido com Flutter.
 
-## Getting Started
+## 📝 Sobre o Projeto
 
-This project is a starting point for a Flutter application.
+Este é um aplicativo que permite aos usuários criar e gerenciar suas listas de compras de forma fácil e intuitiva. A ideia é simplificar a organização das compras do dia a dia.
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Pelo que pude analisar, o projeto está no início, mas a estrutura sugere as seguintes funcionalidades:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*   Criação de listas de compras.
+*   Adição de itens a uma lista.
+*   Visualização de listas existentes.
+
+## 🛠️ Tecnologias Utilizadas
+
+- [**Dart**](https://dart.dev/): Linguagem de programação utilizada pelo Flutter.
+- [**Flutter**](https://flutter.dev/): Framework para desenvolvimento de aplicações multiplataforma.
+
+## 🖼️ Tela (Preview)
+
+
+<img src="assets/images/gif-lista-compras.gif" alt="Demonstração do App" width="300"/>
+
+
+## 🚀 Como Executar o Projeto
+
+Para rodar este projeto em sua máquina local, você precisará ter o Flutter instalado. Depois, siga os passos abaixo:
+
+1.  **Clone o repositório** (se estiver usando git):
+    ```bash
+    git clone <https://github.com/ludson96/mobile-w-flutter.git>
+
+    cd 4-formularios-e-navegacoes/lista_de_compras
+    ```
+
+2.  **Instale as dependências** com o Flutter:
+    ```bash
+    flutter pub get
+    ```
+
+3.  **Execute o aplicativo**:
+    ```bash
+    flutter run
+    ```
