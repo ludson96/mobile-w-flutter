@@ -1,4 +1,6 @@
-# Lista de Compras 🛒
+# App Lista de Compras 🛒
+
+🌍 Read this in [English](README.en.md)
 
 Um aplicativo simples para gerenciamento de listas de compras, desenvolvido com Flutter.
 
@@ -31,7 +33,7 @@ Para rodar este projeto em sua máquina local, você precisará ter o Flutter in
 
 1.  **Clone o repositório** (se estiver usando git):
     ```bash
-    git clone <https://github.com/ludson96/mobile-w-flutter.git>
+    git clone https://github.com/ludson96/mobile-w-flutter.git
 
     cd 4-formularios-e-navegacoes/lista_de_compras
     ```

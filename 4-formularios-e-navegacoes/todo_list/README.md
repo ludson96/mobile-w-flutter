@@ -29,7 +29,7 @@ Para rodar este projeto em sua máquina local, você precisará ter o Flutter in
 
 1.  **Clone o repositório** (se estiver usando git):
     ```bash
-    git clone <https://github.com/ludson96/mobile-w-flutter.git>
+    git clone https://github.com/ludson96/mobile-w-flutter.git
 
     cd 4-formularios-e-navegacoes/todo_list
     ```
