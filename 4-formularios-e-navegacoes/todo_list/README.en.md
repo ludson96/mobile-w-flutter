@@ -7,6 +7,12 @@ A simple to-do list application developed with Flutter. This project was created
 ## 📝 About the Project
 This is an application that allows users to create and manage their to-do lists easily and intuitively. The idea is to simplify the organization of daily tasks.
 
+## 🖼️ Screens (Preview)
+
+The task addition screen allows the user to intuitively enter the task details.
+
+<img src="assets/images/todolist-gif.gif" alt="App Demonstration" width="300"/>
+
 ## ✨ Features
 
 - **Add Tasks**: Quickly add new tasks through a form in a modal.
@@ -18,12 +24,6 @@ This is an application that allows users to create and manage their to-do lists 
 
 - [**Dart**](https://dart.dev/): Programming language used by Flutter.
 - [**Flutter**](https://flutter.dev/): Framework for developing cross-platform applications.
-
-## 🖼️ Screens (Preview)
-
-The task addition screen allows the user to intuitively enter the task details.
-
-<img src="assets/images/todolist-gif.gif" alt="App Demonstration" width="300"/>
 
 ## 🚀 How to Run the Project
 
