@@ -8,6 +8,11 @@ A simple application for managing shopping lists, developed with Flutter.
 
 This application allows users to create and manage their shopping lists easily and intuitively. The goal is to simplify the organization of daily shopping.
 
+## 🖼️ Screen (Preview)
+
+
+<img src="assets/images/lista-compras-gif.gif" alt="App Demonstration" width="300"/>
+
 ## ✨ Features
 
 From what I could analyze, the project is in its early stages, but the structure suggests the following functionalities:
@@ -20,12 +25,6 @@ From what I could analyze, the project is in its early stages, but the structure
 
 - [**Dart**](https://dart.dev/): Programming language used by Flutter.
 - [**Flutter**](https://flutter.dev/): Framework for cross-platform application development.
-
-## 🖼️ Screen (Preview)
-
-
-<img src="assets/images/lista-compras-gif.gif" alt="App Demonstration" width="300"/>
-
 
 ## 🚀 How to Run the Project
 
