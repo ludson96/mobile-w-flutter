@@ -8,6 +8,11 @@ Um aplicativo simples para gerenciamento de listas de compras, desenvolvido com 
 
 Este é um aplicativo que permite aos usuários criar e gerenciar suas listas de compras de forma fácil e intuitiva. A ideia é simplificar a organização das compras do dia a dia.
 
+## 🖼️ Tela (Preview)
+
+
+<img src="assets/images/lista-compras-gif.gif" alt="Demonstração do App" width="300"/>
+
 ## ✨ Funcionalidades
 
 Pelo que pude analisar, o projeto está no início, mas a estrutura sugere as seguintes funcionalidades:
@@ -20,12 +25,6 @@ Pelo que pude analisar, o projeto está no início, mas a estrutura sugere as se
 
 - [**Dart**](https://dart.dev/): Linguagem de programação utilizada pelo Flutter.
 - [**Flutter**](https://flutter.dev/): Framework para desenvolvimento de aplicações multiplataforma.
-
-## 🖼️ Tela (Preview)
-
-
-<img src="assets/images/lista-compras-gif.gif" alt="Demonstração do App" width="300"/>
-
 
 ## 🚀 Como Executar o Projeto
 
