@@ -7,6 +7,12 @@ Um simples aplicativo de lista de tarefas desenvolvido com Flutter. Este projeto
 ## 📝 Sobre o Projeto
 Este é um aplicativo que permite aos usuários criar e gerenciar suas listas de tarefas de forma fácil e intuitiva. A ideia é simplificar a organização das tarefas do dia a dia.
 
+## 🖼️ Telas (Preview)
+
+A tela de adição de tarefas permite ao usuário inserir os detalhes da tarefa de forma intuitiva.
+
+<img src="assets/images/todolist-gif.gif" alt="Demonstração do App" width="300"/>
+
 ## ✨ Funcionalidades
 
 - **Adicionar Tarefas**: Adicione novas tarefas de forma rápida através de um formulário em um modal.
@@ -18,12 +24,6 @@ Este é um aplicativo que permite aos usuários criar e gerenciar suas listas de
 
 - [**Dart**](https://dart.dev/): Linguagem de programação utilizada pelo Flutter.
 - [**Flutter**](https://flutter.dev/): Framework para desenvolvimento de aplicações multiplataforma
-
-## 🖼️ Telas (Preview)
-
-A tela de adição de tarefas permite ao usuário inserir os detalhes da tarefa de forma intuitiva.
-
-<img src="assets/images/todolist-gif.gif" alt="Demonstração do App" width="300"/>
 
 ## 🚀 Como Executar o Projeto
 
