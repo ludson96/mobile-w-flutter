@@ -1,5 +1,7 @@
 # Pokédex App
 
+🌍 Read this in [English](README.en.md)
+
 Uma aplicação mobile moderna e interativa desenvolvida em Flutter para explorar o universo Pokémon, consultar informações detalhadas, buscar por nome/número e visualizar estatísticas completas.
 
 ## 📝 Sobre o Projeto
