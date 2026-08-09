@@ -25,7 +25,7 @@ class PercentageIndicator extends StatelessWidget {
             flex: 8,
             child: LinearPercentIndicator(
               lineHeight: 25,
-              percent: value.toDouble() / 100,
+              percent: (value / 100).clamp(0.0, 1.0),
               progressColor: color,
               animation: true,
               barRadius: const Radius.circular(20),
