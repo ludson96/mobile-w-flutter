@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:app_social_login/main.dart';
-import 'package:app_social_login/pages/messages.page.dart';
-import 'package:app_social_login/pages/settings.page.dart';
+import 'package:app_social_login/pages/profile.page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -28,12 +27,11 @@ class LocalNotificationService {
 
           if (navigateTo != null) {
             if (navigateTo == 'messages') {
-              // globalNavigatorKey.currentState?.pushReplacement(
-              //   MaterialPageRoute(builder: (context) => const MessagePage()),
-              // );
               Navigator.pushReplacement(
                 globalNavigatorKey.currentState!.context,
-                MaterialPageRoute(builder: (context) => const MessagePage()),
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(initialIndex: 2),
+                ),
               );
             }
           }
@@ -41,7 +39,9 @@ class LocalNotificationService {
           if (navigateTo != null) {
             if (navigateTo == 'settings') {
               globalNavigatorKey.currentState?.pushReplacement(
-                MaterialPageRoute(builder: (context) => const SettingsPage()),
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(initialIndex: 3),
+                ),
               );
             }
           }
