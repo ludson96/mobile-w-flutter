@@ -94,4 +94,32 @@ abstract class _LoginStore with Store {
       return null;
     }
   }
+
+  @action
+  Future<void> signOut() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        for (final provider in user.providerData) {
+          if (provider.providerId == 'google.com') {
+            try {
+              await GoogleSignIn.instance.signOut();
+            } catch (e) {
+              debugPrint('Erro ao deslogar do Google: $e');
+            }
+          } else if (provider.providerId == 'facebook.com') {
+            try {
+              await FacebookAuth.instance.logOut();
+            } catch (e) {
+              debugPrint('Erro ao deslogar do Facebook: $e');
+            }
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint('Erro ao verificar provedores no deslogar: $e');
+    } finally {
+      await FirebaseAuth.instance.signOut();
+    }
+  }
 }

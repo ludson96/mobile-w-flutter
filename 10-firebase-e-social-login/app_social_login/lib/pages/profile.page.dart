@@ -1,5 +1,7 @@
 import 'package:app_social_login/pages/about.page.dart';
 import 'package:app_social_login/pages/favorites.page.dart';
+import 'package:app_social_login/pages/login/login.page.dart';
+import 'package:app_social_login/pages/login/store/login.store.dart';
 import 'package:app_social_login/pages/messages.page.dart';
 import 'package:app_social_login/pages/settings.page.dart';
 import 'package:app_social_login/services/firebase_notification.service.dart';
@@ -29,16 +31,31 @@ class _ProfilePageState extends State<ProfilePage> {
     GetIt.I<FirebaseNotificationService>().initialize();
   }
 
+  Future<void> _handleSignOut() async {
+    await GetIt.I<LoginStore>().signOut();
+    if (mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+        (route) => false,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       drawer: CustomDrawer(
         selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+        onDestinationSelected: (index) async {
+          if (index == 5) {
+            await _handleSignOut();
+          } else {
+            setState(() {
+              _selectedIndex = index;
+            });
+          }
         },
       ),
       // Exibe um Widget diferente com base no índice atual selecionado no Drawer
@@ -65,7 +82,13 @@ class _ProfilePageState extends State<ProfilePage> {
         const MessagePage(),
         const SettingsPage(),
         const AboutPage(),
-        const Center(child: Text('Ação de Sair')),
+        Center(
+          child: ElevatedButton.icon(
+            onPressed: _handleSignOut,
+            icon: const Icon(Icons.exit_to_app),
+            label: const Text('Sair da conta'),
+          ),
+        ),
       ][_selectedIndex],
     );
   }
